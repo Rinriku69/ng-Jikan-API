@@ -1,0 +1,7 @@
+Search/Filter
+    Endpoint: GET /anime?q={keyword}
+
+Top anime
+    Endpoint: GET /top/anime
+
+Pagination
