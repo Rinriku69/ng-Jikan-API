@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { TopAnimePage } from './anime/page/top-anime/top-anime-page';
+import { TopAnimePage } from './anime/page/top-anime-page/top-anime-page';
 import { AnimeRoot } from './anime/page/anime-root/anime-root';
-import { ListAnimePage } from './anime/page/list-anime/list-anime-page';
+import { ListAnimePage } from './anime/page/list-anime-page/list-anime-page';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'list-anime', pathMatch: 'full' },
