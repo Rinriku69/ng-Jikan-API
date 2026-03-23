@@ -7,6 +7,11 @@ export interface JikanAnimeByIdResponse {
     readonly data: Anime;
 }
 
+export interface JikanAnimeListResponse {
+    readonly pagination: Pagination;
+    readonly data: readonly Anime[];
+}
+
 export interface Pagination {
     readonly last_visible_page: number;
     readonly has_next_page: boolean;
