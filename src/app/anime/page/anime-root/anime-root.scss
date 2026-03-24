@@ -13,8 +13,8 @@
   background: linear-gradient(to left, rgb(0, 0, 0), #00000045);
   border-radius: 5px;
   box-shadow:
-    0 1px 3px rgba(123, 0, 0, 0.3),
-    0 4px 16px rgba(122, 0, 0, 0.6);
+    0 1px 3px rgb(0, 0, 0),
+    0 4px 16px rgb(0, 0, 0);
   overflow: hidden;
 }
 
@@ -23,12 +23,11 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  padding: 28px 24px 20px;
   border-bottom: 1px solid #f0f0f0;
 
   h1 {
-    font-size: 2.5rem;
-    font-weight: 200;
+    font-size: 4rem;
+    font-weight: 300;
     color: #ffffff;
     letter-spacing: 0.2em;
     font-family:fantasy;
@@ -36,24 +35,26 @@
 }
 
 .navbar {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   padding: 10px 16px;
-  background: linear-gradient(to left,rgb(255, 183, 171), rgb(255, 238, 235));
-  border-bottom: 1px solid #ff0000;
+  background: linear-gradient(to left,rgb(255, 157, 0), rgb(255, 235, 15));
+  border-bottom: 1px solid #ffd900;
     box-shadow:
     0 1px 3px rgba(123, 0, 0, 0.3),
     0 4px 16px rgba(122, 0, 0, 0.6);
 
   .nav-btn {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 5px;
     padding: 8px 16px;
     font-size: 1rem;
     font-weight: 800;
-    color: brown;
+    color: rgb(161, 0, 0);
     border-radius: 20px;
     background: transparent;
     transition: all 0.2s ease;
@@ -116,11 +117,12 @@
 .footer {
   background-color: rgb(131, 0, 0);
   text-align: center;
-  padding: 5px 24px;
-  border-top: 1px solid #ff0000;
+  padding: 5px 0px;
+  border-top: 1px solid #000000;
   color: #ffffff;
   font-size: 1rem;
   letter-spacing: 0.05em;
   font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
