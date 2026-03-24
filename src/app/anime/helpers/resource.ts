@@ -43,5 +43,5 @@ export function topAnimeResource(queryParams: () => AnimeListParams | undefined)
 }
 
 export function animeViewResource(id: () => string | undefined) {
-  return httpResource<Anime>(() => (id() ? `${entryPointURL}/anime/${id()!}` : undefined));
+  return httpResource<JikanAnimeByIdResponse>(() => (id() ? `${entryPointURL}/anime/${id()!}` : undefined));
 }

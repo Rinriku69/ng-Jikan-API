@@ -1,11 +1,22 @@
   <dl>
-    <!-- <dt>Image</dt>
-    <dd>
-      <img
-        [src]="data().images?.jpg?.image_url"
-        [alt]="data().title"
-      />
-    </dd> -->
+    <dt>Image</dt>
+    @if(data().images.webp){
+      <dd>
+        <img
+          [src]="data().images.webp.image_url"
+          [alt]="data().title"
+        />
+      </dd>
+
+    }@else {
+
+      <dd>
+        <img
+          [src]="data().images.jpg.image_url"
+          [alt]="data().title"
+        />
+      </dd>
+    }
 
     <dt>Title</dt>
     <dd>{{ data().title }}</dd>
@@ -25,3 +36,4 @@
     <dt>Season</dt>
     <dd>{{ data().season }}</dd>
   </dl>
+

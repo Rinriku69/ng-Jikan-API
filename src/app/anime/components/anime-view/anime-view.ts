@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { Anime } from '../../types';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-anime-view',
