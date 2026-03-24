@@ -8,4 +8,4 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './anime-root.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnimeRoot {}
+export class AnimeRoot { }
