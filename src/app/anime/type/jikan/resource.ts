@@ -126,3 +126,15 @@ export interface MalResource {
     readonly name: string;
     readonly url: string;
 }
+
+export interface AnimeListParams {
+    readonly q?: string;
+    readonly page?: number;
+    readonly limit?: string;
+    readonly type?: 'tv' | 'movie' | 'ova' | 'special';
+    readonly score?: number;
+    readonly status?: 'airing' | 'complete';
+    readonly sfw?: boolean;
+    readonly genres?: string;
+    readonly order_by?: string;
+}
