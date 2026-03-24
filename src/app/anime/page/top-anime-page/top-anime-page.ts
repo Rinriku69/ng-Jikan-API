@@ -5,6 +5,7 @@ import { ListAnime } from '../../components/list-anime/list-anime';
 import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { disabled, form, FormField, submit } from '@angular/forms/signals';
+import { purnEmptyProperties } from '../../helpers/utils';
 
 @Component({
   selector: 'app-top-anime-page',
@@ -36,7 +37,7 @@ export class TopAnimePage {
       this.form,
       async (form) =>
         void this.router.navigate([], {
-          queryParams: form().value(),
+          queryParams: purnEmptyProperties(form().value()),
           replaceUrl: true
         })
     )
