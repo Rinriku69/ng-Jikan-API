@@ -3,6 +3,7 @@
             @for (item of data(); track item) {
                 <li>
                     {{ item.title }}
+                    <img [src]="item.images.jpg.image_url" [alt]="item.title" width="120" />      
                 </li>
             }
         </ul>
