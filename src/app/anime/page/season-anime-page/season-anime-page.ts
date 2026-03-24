@@ -9,7 +9,7 @@ import { ListAnime } from '../../components/list-anime/list-anime';
   styleUrl: './season-anime-page.scss',
 })
 export class SeasonAnimePage {
-  protected readonly currentPage = signal(1);
+  protected readonly currentPage = signal('1');
 
   protected readonly resource = currentSeasonAnimeResource(() => ({
     page: this.currentPage(),

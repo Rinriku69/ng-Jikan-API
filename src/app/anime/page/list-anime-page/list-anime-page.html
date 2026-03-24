@@ -1,6 +1,13 @@
 
 <h1>list-anime</h1>
+<form (submit)="$event.preventDefault()" (submit)="onSearch()">
+    <fieldset [disabled]="form().disabled()">
+      <!-- Form can not disabled on some browser -->
+      <input type="text" [formField]="form.q" placeholder="Search" />
 
+      <button type="button" (click)="clearSearch()">X</button>
+    </fieldset>
+  </form>
 @if (resource.hasValue()) {
     <app-list-anime [data]="resource.value().data"></app-list-anime>
 } @else if (resource.isLoading()) {

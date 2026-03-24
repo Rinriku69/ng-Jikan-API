@@ -126,7 +126,7 @@ export interface MalResource {
 
 export interface AnimeListParams {
     readonly q?: string;
-    readonly page?: number;
+    readonly page?: string;
     readonly limit?: string;
     readonly type?: 'tv' | 'movie' | 'ova' | 'special';
     readonly score?: number;
