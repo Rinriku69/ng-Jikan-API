@@ -32,6 +32,62 @@
     letter-spacing: 0.2em;
     font-family:fantasy;
   }
+/* ===== WRAPPER ===== */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== LINK ===== */
+.logo-link {
+  position: relative; /* 🔥 สำคัญ */
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-flex;   /* 🔥 ใช้อันนี้แทน inline-block */
+  align-items: center;
+  white-space: nowrap;    /* 🔥 กันตัวหนังสือตกบรรทัด */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+
+}
+
+/* ===== TEXT ===== */
+.logo-text {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  font-family: fantasy;
+  display: inline-block;  /* กัน layout เพี้ยน */
+  transition: all 0.4s ease;
+}
+
+/* ===== ICON (ไม่กินพื้นที่แล้ว) ===== */
+.logo-icon {
+  position: absolute;
+  left: 100%; /* ไปอยู่ขวาของ text */
+  top: 50%;
+  transform: translate(-20px, -50%);
+
+  opacity: 0;
+  font-size: 2rem;
+
+  transition: all 0.4s ease;
+}
+
+/* ===== HOVER ===== */
+.logo-link:hover {
+  transform: translateX(-40px);
+}
+
+.logo-link:hover .logo-text {
+  letter-spacing: 0.4em;
+}
+
+.logo-link:hover .logo-icon {
+  opacity: 1;
+  transform: translate(10px, -50%);
+}
 }
 
 .navbar {
