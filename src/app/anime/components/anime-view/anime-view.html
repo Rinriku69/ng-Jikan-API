@@ -1,41 +1,39 @@
-  <dl>
-    <dt>Image</dt>
+<div class="anime-detail">
+
+  <div class="anime-image">
     @if(data().images.webp){
-      <dd>
-        <img
-          [src]="data().images.webp.image_url"
-          [alt]="data().title"
-        />
-      </dd>
-
-    }@else {
-
-      <dd>
-        <img
-          [src]="data().images.jpg.image_url"
-          [alt]="data().title"
-        />
-      </dd>
+      <img [src]="data().images.webp.image_url" [alt]="data().title" />
+    } @else {
+      <img [src]="data().images.jpg.image_url" [alt]="data().title" />
     }
+  </div>
 
-    <dt>Title</dt>
-    <dd>{{ data().title }}</dd>
+  <div class="anime-info">
 
-    <dt>Type</dt>
-    <dd>{{ data().type }}</dd>
+    <div class="info-row">
+      <span class="label">Title</span>
+      <span class="value">{{ data().title }}</span>
+    </div>
 
-    <dt>Episodes</dt>
-    <dd>{{ data().episodes }}</dd>
+    <div class="info-row">
+      <span class="label">Type</span>
+      <span class="value">{{ data().type }}</span>
+    </div>
 
-    <dt>Status</dt>
-    <dd>{{ data().status }}</dd>
+    <div class="info-row">
+      <span class="label">Episodes</span>
+      <span class="value">{{ data().episodes }}</span>
+    </div>
 
-    <dt>Rating</dt>
-    <dd>{{ data().rating }}</dd>
+    <div class="info-row">
+      <span class="label">Status</span>
+      <span class="value">{{ data().status }}</span>
+    </div>
 
-    <dt>Season</dt>
-    <dd>{{ data().season }}</dd>
-  </dl>
+    <div class="info-row">
+      <span class="label">Rating</span>
+      <span class="value">{{ data().rating }}</span>
+    </div>
 
   @for (character of characters(); track character.character.mal_id) {
    @if(character.role === 'Main'){
