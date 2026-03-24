@@ -1,7 +1,7 @@
 <p>anime-view-page works!</p>
 
 @if (resource.hasValue()) {
-  <app-anime-view [data]="resource.value()"/>
+  <app-anime-view [data]="resource.value().data"/>
 } @else if (resource.error(); as error) {
   <p>{{ error.message }}</p>
 } @else if (resource.isLoading()) {
