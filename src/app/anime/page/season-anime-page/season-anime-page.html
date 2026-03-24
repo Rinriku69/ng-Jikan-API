@@ -1,0 +1,9 @@
+<p>season-anime-page works!</p>
+
+@if (resource.hasValue()) {
+    <app-list-anime [data]="resource.value().data"></app-list-anime>
+} @else if (resource.isLoading()) {
+    <p>Loading...</p>
+} @else if (resource.error()) {
+    <p>Error: {{ resource.error() }}</p>
+}

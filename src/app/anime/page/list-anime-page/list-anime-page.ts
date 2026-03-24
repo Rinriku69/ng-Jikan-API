@@ -14,6 +14,5 @@ export class ListAnimePage {
 
   protected readonly resource = animeListResource(() => ({
     page: this.currentPage(),
-
   }));
 }
