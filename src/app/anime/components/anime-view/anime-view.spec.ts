@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopAnimeView } from './top-anime-view';
+import { AnimeView } from './anime-view';
 
-describe('TopAnimeView', () => {
-  let component: TopAnimeView;
-  let fixture: ComponentFixture<TopAnimeView>;
+describe('AnimeView', () => {
+  let component: AnimeView;
+  let fixture: ComponentFixture<AnimeView>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopAnimeView],
+      imports: [AnimeView],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TopAnimeView);
+    fixture = TestBed.createComponent(AnimeView);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

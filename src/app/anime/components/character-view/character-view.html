@@ -1,0 +1,47 @@
+<div class="character-detail">
+
+  <!-- 🖼️ LEFT -->
+  <div class="character-image">
+    <img
+      [src]="data().images.webp.image_url"
+      [alt]="data().name"
+    />
+  </div>
+
+  <!-- 📄 RIGHT -->
+  <div class="character-content">
+
+    <!-- 🔹 INFO -->
+    <div class="character-info">
+
+      <div class="info-row">
+        <span class="label">Name</span>
+        <span class="value">
+          {{data().name}} ({{data().name_kanji}})
+        </span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Nickname</span>
+        <span class="value">{{data().nicknames}}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Favorites</span>
+        <span class="value">{{data().favorites}}</span>
+      </div>
+
+    </div>
+
+    <!-- 🔥 ABOUT -->
+    <div class="character-extra">
+      <h2 class="section-title">About Character</h2>
+
+      <p class="about-text">
+        {{data().about}}
+      </p>
+    </div>
+
+  </div>
+
+</div>

@@ -1,3 +1,68 @@
+<div class="top-bar">
 
+  <div class="pagination-left">
+    @if (resource.hasValue()) {
+      <div class="page-info">
+        <span>
+          {{resource.value().pagination.current_page * resource.value().pagination.items.count - 24}}
+          -
+          {{resource.value().pagination.current_page * resource.value().pagination.items.count}}
+        </span>
+        <b> of </b>
+        <span>{{ resource.value().pagination.items.total | number }}</span>
+      </div>
+    }
 
-<h1>top-anime</h1>
+    <div class="page-number">
+      Page: <b>{{ currentPage() }}</b>
+    </div>
+
+    <div class="pagination-controls">
+      <a
+        class="page-btn"
+        [routerLink]="previousPage() ? [] : null"
+        [queryParams]="{ page: previousPage() }"
+        queryParamsHandling="merge"
+      >
+        ‹
+      </a>
+
+      <a
+        class="page-btn"
+        [routerLink]="nextPage() ? [] : null"
+        [queryParams]="{ page: nextPage() }"
+        queryParamsHandling="merge"
+      >
+        ›
+      </a>
+    </div>
+  </div>
+
+  <div class="search-right">
+    <form (submit)="$event.preventDefault()" (submit)="onSearch()">
+      <fieldset [disabled]="form().disabled()" class="form-group">
+
+        <input 
+          type="text" 
+          [formField]="form.q" 
+          placeholder="Search anime..." 
+          class="form-control"
+        />
+
+        <button type="button" (click)="clearSearch()" class="clear-btn">
+          ✕
+        </button>
+
+      </fieldset>
+    </form>
+  </div>
+
+</div>
+
+@if (resource.hasValue()) {
+    <app-list-anime [data]="resource.value().data"/>
+} @else if (resource.isLoading()) {
+    <p>Loading...</p>
+} @else if (resource.error()) {
+    <p>Error: {{ resource.error() }}</p>
+}
