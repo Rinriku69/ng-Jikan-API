@@ -1,12 +1,18 @@
 @if (data().length > 0) {
-        <ul>
-            @for (item of data(); track item) {
-                <li>
-                    {{ item.title }}
-                    <img [src]="item.images.jpg.image_url" [alt]="item.title" width="120" />
-                </li>
-            }
-        </ul>
-    } @else {
-        <p>Not found.</p>
+  <div class="anime-grid">
+    @for (item of data(); track item) {
+      <div class="anime-card">
+        <img 
+          [src]="item.images.jpg.image_url" 
+          [alt]="item.title"
+        />
+
+        <div class="anime-info">
+          <h3>{{ item.title }}</h3>
+        </div>
+      </div>
     }
+  </div>
+} @else {
+  <p>Not found.</p>
+}

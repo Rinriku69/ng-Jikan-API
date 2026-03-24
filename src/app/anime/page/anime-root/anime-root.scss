@@ -2,3 +2,125 @@
     display: flex;
     gap: 8rem;
 }
+
+.main {
+  max-width: auto;
+  margin: 0 auto;
+  padding: 15px 20px 20px;
+}
+
+.content {
+  background: linear-gradient(to left, rgb(0, 0, 0), #00000045);
+  border-radius: 5px;
+  box-shadow:
+    0 1px 3px rgba(123, 0, 0, 0.3),
+    0 4px 16px rgba(122, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid #f0f0f0;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+    color: #ffffff;
+    letter-spacing: 0.2em;
+    font-family:fantasy;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px 16px;
+  background: linear-gradient(to left,rgb(255, 183, 171), rgb(255, 238, 235));
+  border-bottom: 1px solid #ff0000;
+    box-shadow:
+    0 1px 3px rgba(123, 0, 0, 0.3),
+    0 4px 16px rgba(122, 0, 0, 0.6);
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: brown;
+    border-radius: 20px;
+    background: transparent;
+    transition: all 0.2s ease;
+
+    &.active-btn {
+      background: linear-gradient(to left, rgb(188, 0, 0),rgb(255, 0, 0));
+      color: whitesmoke;
+      box-shadow: 0 2px 10px rgb(84, 0, 0);
+      transform:scale(1.2);
+
+    }
+
+    &:hover:not(.active-btn) {
+      background: whitesmoke;
+      color: #8a0000;
+      transform:scale(1.2);
+    }
+  }
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor; 
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+/* hover เด้ง */
+.nav-btn:hover .icon {
+  transform: translateY(-4px) scale(1.2);
+}
+
+/* active ลอย */
+.active-btn .icon {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* setting หมุน */
+.setting:hover .icon {
+  animation: spin 0.6s linear infinite;
+}
+
+/* animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.content-area {
+  padding: 15px;
+  min-height:500px;
+}
+
+.footer {
+  background-color: rgb(131, 0, 0);
+  text-align: center;
+  padding: 5px 24px;
+  border-top: 1px solid #ff0000;
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+
+}

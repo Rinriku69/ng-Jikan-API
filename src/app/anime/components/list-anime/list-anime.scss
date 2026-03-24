@@ -1,0 +1,46 @@
+/* Grid layout */
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Card */
+.anime-card {
+  display: flex;
+  flex-direction: column;
+  background: #1e1e2f;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect 🔥 */
+.anime-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Image */
+.anime-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Info */
+.anime-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Title */
+.anime-info h3 {
+  font-size: 14px;
+  color: #fff;
+}
