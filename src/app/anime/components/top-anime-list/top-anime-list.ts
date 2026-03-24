@@ -7,4 +7,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrl: './top-anime-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TopAnimeList {}
+export class TopAnimeList { }
