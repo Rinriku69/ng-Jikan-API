@@ -8,39 +8,59 @@
     }
   </div>
 
-  <div class="anime-info">
+  <div class="anime-content">
 
-    <div class="info-row">
-      <span class="label">Title</span>
-      <span class="value">{{ data().title }}</span>
+    <div class="anime-info">
+
+      <div class="info-row">
+        <span class="label">Title</span>
+        <span class="value">{{ data().title }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Type</span>
+        <span class="value">{{ data().type }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Episodes</span>
+        <span class="value">{{ data().episodes }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Status</span>
+        <span class="value">{{ data().status }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Rating</span>
+        <span class="value">{{ data().rating }}</span>
+      </div>
+
     </div>
 
-    <div class="info-row">
-      <span class="label">Type</span>
-      <span class="value">{{ data().type }}</span>
+    <div class="anime-extra">
+
+      <h2 class="section-title">Main Characters</h2>
+
+      <div class="character-list">
+        @for (character of characters(); track character.character.mal_id) {
+          @if(character.role === 'Main') {
+
+            <div class="character-card">
+              <img
+                [src]="character.character.images.webp.image_url"
+                [alt]="character.character.name"
+              />
+              <p>{{character.character.name}}</p>
+            </div>
+
+          }
+        }
+      </div>
+
     </div>
 
-    <div class="info-row">
-      <span class="label">Episodes</span>
-      <span class="value">{{ data().episodes }}</span>
-    </div>
+  </div>
 
-    <div class="info-row">
-      <span class="label">Status</span>
-      <span class="value">{{ data().status }}</span>
-    </div>
-
-    <div class="info-row">
-      <span class="label">Rating</span>
-      <span class="value">{{ data().rating }}</span>
-    </div>
-
-  @for (character of characters(); track character.character.mal_id) {
-   @if(character.role === 'Main'){
-    <img
-          [src]="character.character.images.webp.image_url"
-          [alt]="character.character.name"
-        />
-    <p>{{character.character.name}}</p>
-   }
-  }
+</div>
