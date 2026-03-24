@@ -2,17 +2,24 @@
   <div class="anime-grid">
     @for (item of data(); track item) {
       <div class="anime-card">
-        <a [routerLink]="['../', item.mal_id]">
-          <img 
-            [src]="item.images.webp.image_url" 
-            [alt]="item.title"
-          />
-        </a>
+  <a [routerLink]="['../', item.mal_id]">
 
-        <div class="anime-info">
-          <h3>{{ item.title }}</h3>
-        </div>
-      </div>
+    <!-- ⭐ SCORE BADGE -->
+    <div class="score-badge">
+      <span class="star">★</span>
+      <span class="score">{{ item.score }}</span>
+    </div>
+
+    <img 
+      [src]="item.images.webp.image_url" 
+      [alt]="item.title"
+    />
+  </a>
+
+  <div class="anime-info">
+    <h3>{{ item.title }}</h3>
+  </div>
+</div>
     }
   </div>
 } @else {

@@ -45,3 +45,39 @@
   font-size: 14px;
   color: #fff;
 }
+/* ===== CARD ต้อง relative ===== */
+.anime-card {
+  position: relative; /* 🔥 สำคัญ */
+}
+
+/* ===== SCORE BADGE ===== */
+.score-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+/* ดาว */
+.star {
+  color: gold;
+  font-size: 14px;
+}
+
+/* คะแนน */
+.score {
+  color: white;
+}
