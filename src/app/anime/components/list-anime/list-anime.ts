@@ -8,5 +8,5 @@ import { Anime } from '../../types';
   styleUrl: './list-anime.scss',
 })
 export class ListAnime {
-  readonly data = input<readonly Anime[]>();
+  readonly data = input.required<readonly Anime[]>();
 }
