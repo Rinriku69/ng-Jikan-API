@@ -1,7 +1,4 @@
-export interface JikanSeasonsNowResponse {
-    readonly pagination: Pagination;
-    readonly data: readonly Anime[];
-}
+
 
 export interface JikanAnimeByIdResponse {
     readonly data: Anime;
