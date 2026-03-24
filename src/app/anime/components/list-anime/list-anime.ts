@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { Anime } from '../../types';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-anime',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './list-anime.html',
   styleUrl: './list-anime.scss',
 })

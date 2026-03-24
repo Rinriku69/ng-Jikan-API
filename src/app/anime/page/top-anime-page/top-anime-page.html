@@ -1,3 +1,7 @@
-
-
-<h1>top-anime</h1>
+@if (resource.hasValue()) {
+    <app-top-anime-list [data]="resource.value().data"></app-top-anime-list>
+} @else if (resource.isLoading()) {
+    <p>Loading...</p>
+} @else if (resource.error()) {
+    <p>Error: {{ resource.error() }}</p>
+}
