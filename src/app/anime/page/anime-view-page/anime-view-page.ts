@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { animeViewResource } from '../../helpers/resource';
+import { animeViewResource, getAnimeCharacter } from '../../helpers/resource';
 import { AnimeView } from '../../components/anime-view/anime-view';
 
 @Component({
@@ -11,4 +11,5 @@ import { AnimeView } from '../../components/anime-view/anime-view';
 export class AnimeViewPage {
   readonly id = input.required<string>();
   readonly resource = animeViewResource(() => this.id());
+  readonly characterResource = getAnimeCharacter(() => this.id());
 }

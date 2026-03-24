@@ -2,6 +2,7 @@
 // 1. Get Character By ID (/characters/{id})
 // ==========================================
 
+
 export interface JikanCharacterByIdResponse {
     readonly data: CharacterFull;
 }
@@ -28,6 +29,7 @@ export interface JikanAnimeCharactersResponse {
 export interface AnimeCharacter {
     readonly character: CharacterBasic;
     readonly role: string;
+    readonly favorites: number;
     readonly voice_actors: readonly VoiceActor[];
 }
 

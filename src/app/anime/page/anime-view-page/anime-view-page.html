@@ -1,5 +1,5 @@
-@if (resource.hasValue()) {
-  <app-anime-view [data]="resource.value().data"/>
+@if (resource.hasValue() && characterResource.hasValue()) {
+  <app-anime-view [data]="resource.value().data" [characters]="characterResource.value().data"/>
 } @else if (resource.error(); as error) {
   <p>{{ error.message }}</p>
 } @else if (resource.isLoading()) {

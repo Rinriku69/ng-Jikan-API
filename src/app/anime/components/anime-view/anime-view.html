@@ -37,3 +37,12 @@
     <dd>{{ data().season }}</dd>
   </dl>
 
+  @for (character of characters(); track character.character.mal_id) {
+   @if(character.role === 'Main'){
+    <img
+          [src]="character.character.images.webp.image_url"
+          [alt]="character.character.name"
+        />
+    <p>{{character.character.name}}</p>
+   }
+  }
