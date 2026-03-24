@@ -1,6 +1,6 @@
 import { httpResource } from "@angular/common/http";
 import { Anime, AnimeListParams, JikanAnimeByIdResponse, JikanAnimeListResponse, } from "../types";
-import { JikanAnimeCharactersResponse } from "../type/jikan/character";
+import { JikanAnimeCharactersResponse, JikanCharacterByIdResponse } from "../type/jikan/character";
 
 
 
@@ -50,4 +50,8 @@ export function animeViewResource(id: () => string | undefined) {
 
 export function getAnimeCharacter(id: () => string | undefined) {
   return httpResource<JikanAnimeCharactersResponse>(() => id() ? `${entryPointURL}/anime/${id()!}/characters` : undefined)
+}
+
+export function getCharacter(id: () => string | undefined) {
+  return httpResource<JikanCharacterByIdResponse>(() => id() ? `${entryPointURL}/characters/${id()!}` : undefined)
 }

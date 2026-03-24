@@ -2,10 +2,11 @@ import { Component, input } from '@angular/core';
 import { Anime } from '../../types';
 import { JsonPipe } from '@angular/common';
 import { AnimeCharacter, CharacterBasic } from '../../type/jikan/character';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-anime-view',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './anime-view.html',
   styleUrl: './anime-view.scss',
 })

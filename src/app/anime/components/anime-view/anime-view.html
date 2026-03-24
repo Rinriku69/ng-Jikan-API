@@ -2,9 +2,9 @@
 
   <div class="anime-image">
     @if(data().images.webp){
-      <img [src]="data().images.webp.image_url" [alt]="data().title" />
-    } @else {
       <img [src]="data().images.jpg.image_url" [alt]="data().title" />
+    } @else {
+      <img [src]="data().images.webp.image_url" [alt]="data().title" />
     }
   </div>
 
@@ -48,10 +48,12 @@
           @if(character.role === 'Main') {
 
             <div class="character-card">
-              <img
+              <a [routerLink]="['/anime/character',character.character.mal_id]">
+                <img
                 [src]="character.character.images.webp.image_url"
                 [alt]="character.character.name"
-              />
+                />
+              </a>
               <p>{{character.character.name}}</p>
             </div>
 
