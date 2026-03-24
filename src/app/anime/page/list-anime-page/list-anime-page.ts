@@ -3,11 +3,13 @@ import { ListAnime } from '../../components/list-anime/list-anime';
 import { animeListResource } from '../../helpers/resource';
 import { AnimeListParams } from '../../types';
 import { disabled, form, FormField, submit } from '@angular/forms/signals';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { DecimalPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-list-anime-page',
-  imports: [ListAnime, FormField],
+  imports: [ListAnime, FormField, RouterLink, DecimalPipe],
   templateUrl: './list-anime-page.html',
   styleUrl: './list-anime-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +22,8 @@ export class ListAnimePage {
     q: this.q() ?? '',
     page: this.page() ?? ''
   }))
+
+
 
 
   protected readonly resource = animeListResource(() => this.params());
@@ -45,4 +49,29 @@ export class ListAnimePage {
     this.form.q().value.set('');
     this.onSearch()
   }
+
+
+
+  protected readonly currentPage = computed(() => Number(this.page() ?? 1));
+
+  protected readonly previousPage = computed(() => {
+    if (this.resource.hasValue()) {
+      const currentPage = this.resource.value().pagination.current_page;
+
+      if (currentPage === 1) {
+        return null;
+      }
+
+      return currentPage - 1;
+    } else {
+      return null;
+    }
+  });
+
+  protected readonly nextPage = computed(() =>
+    this.resource.hasValue() && this.resource.value().pagination.has_next_page
+      ? this.resource.value().pagination.current_page + 1
+      : null,
+  );
+
 }

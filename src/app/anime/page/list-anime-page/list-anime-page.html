@@ -7,7 +7,43 @@
 
       <button type="button" (click)="clearSearch()">X</button>
     </fieldset>
-  </form>
+</form>
+ <nav>
+    @if (resource.hasValue()) {
+      <span>
+        <span>{{resource.value().pagination.current_page * resource.value().pagination.items.count -24}} - {{ resource.value().pagination.current_page * resource.value().pagination.items.count}}</span>
+        <b> of </b>
+        <span>{{ resource.value().pagination.items.total | number }}</span>
+      </span>
+    } @else if (resource.isLoading()) {
+      <p>Loading</p>
+    } @else if (resource.error(); as error) {
+      <p>Error!</p>
+    }
+    <br>
+    <span>
+      <b> Page : </b>
+      <span>{{ currentPage() }}</span>
+    </span>
+    <ul>
+      <li>
+        <a
+          [routerLink]="previousPage() ? [] : null"
+          [queryParams]="{ page: previousPage() }"
+          queryParamsHandling="merge"
+          >&lt;</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="nextPage() ? [] : null"
+          [queryParams]="{ page: nextPage() }"
+          queryParamsHandling="merge"
+          >&gt;</a
+        >
+      </li>
+    </ul>
+  </nav>
 @if (resource.hasValue()) {
   <app-list-anime [data]="resource.value().data"></app-list-anime>
 } @else if (resource.isLoading()) {
