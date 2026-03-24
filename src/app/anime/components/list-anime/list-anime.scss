@@ -10,16 +10,17 @@
 .anime-card {
   display: flex;
   flex-direction: column;
-  background: #1e1e2f;
+  background: #2f1e1e;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
 }
 
 /* Hover effect 🔥 */
 .anime-card:hover {
-  transform: translateY(-8px) scale(1.03);
+  transform: translateY(-8px) scale(1.05);
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
