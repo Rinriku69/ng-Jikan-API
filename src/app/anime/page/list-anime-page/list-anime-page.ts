@@ -4,6 +4,7 @@ import { animeListResource, getAnimeGenres } from '../../helpers/resource';
 import { AnimeListParams } from '../../types';
 import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
+import { form, submit } from '@angular/forms/signals';
 
 
 
@@ -28,7 +29,43 @@ export class ListAnimePage {
   protected readonly resource = animeListResource(() => this.params());
   protected readonly genresResource = getAnimeGenres();
 
+  protected readonly filterForm = form(linkedSignal(() => ({
+    q: this.q() ?? '',
+    // string from query parameter to array
+    genres: this.genres() ? this.genres()!.split(',').map(Number) : []
+  })));
+
+
+
   //---Genres----
+  protected toggleGenreInForm(genreId: number, isChecked: boolean): void {
+    const currentGenres = this.filterForm.genres().value();
+
+    let newGenres: number[];
+    if (isChecked) {
+      newGenres = [...currentGenres, genreId];
+    } else {
+      newGenres = currentGenres.filter(id => id !== genreId);
+    }
+    this.filterForm.genres().value.set(newGenres);
+  }
+
+  protected onApplyFilter(): void {
+    submit(this.filterForm, async (formValue) => {
+      const v = formValue().value();
+
+      const queryParams: any = {
+        q: v.q || null,
+        genres: v.genres.length > 0 ? v.genres.join(',') : null,
+        page: null // เปลี่ยนฟิลเตอร์ใหม่ ต้องกลับไปหน้า 1
+      };
+
+      void this.router.navigate([], {
+        queryParams: queryParams,
+        queryParamsHandling: 'merge'
+      });
+    });
+  }
   protected readonly isFilterExpanded = signal(false);
   protected readonly selectedGenreIds = computed(() => {
     const genresStr = this.genres();
@@ -56,6 +93,9 @@ export class ListAnimePage {
     });
   }
   //----------------
+
+
+
   protected readonly currentPage = computed(() => Number(this.page() ?? 1));
 
   protected readonly previousPage = computed(() => {
