@@ -58,56 +58,167 @@ fieldset {
 /* เทคนิคทำ Accordion ให้หุบ-ขยายแบบลื่นไหล */
 .genres-wrapper {
   display: grid;
-  grid-template-rows: 0fr; /* หดเป็น 0 */
+  grid-template-rows: 0fr;
   transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  margin-bottom: 20px;
+  margin: 0 20px; /* ขยับขอบให้ตรงกับ top-bar */
 
   &.expanded {
-    grid-template-rows: 1fr; /* ขยายเต็ม */
+    grid-template-rows: 1fr;
+    margin-bottom: 25px; /* ดันเนื้อหาด้านล่างลงเมื่อเปิด */
   }
 }
 
 .genres-inner {
-  overflow: hidden; /* จำเป็นมาก เพื่อไม่ให้เนื้อหาทะลุตอนหุบ */
+  overflow: hidden;
+}
+
+/* กล่องบรรจุ Checkbox และ ปุ่ม */
+.genres-container {
+  background: linear-gradient(145deg, rgba(30, 0, 0, 0.9), rgba(10, 0, 0, 0.95));
+  border: 1px solid rgb(161, 0, 0);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    inset 0 0 15px rgba(161, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column; /* จัดให้ grid อยู่บน ปุ่มอยู่ล่าง */
+  gap: 20px;
 }
 
 /* ดีไซน์ Grid ของ Checkbox */
 .genres-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  margin-top: 10px;
+  /* เปลี่ยนจากการใช้ 1fr เป็นการกำหนดขนาดคงที่ไปเลย หรือใช้ auto-fit ควบคู่กับขนาดคงที่ */
+  grid-template-columns: repeat(auto-fill, 250px);
+
+  /* จัดให้อยู่ตรงกลาง (กรณีหน้าจอกว้างแล้วเหลือเศษขอบ) */
+  justify-content: center;
+  gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+
+  /* ตกแต่ง Scrollbar ให้เข้าธีม */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(161, 0, 0);
+    border-radius: 4px;
+  }
 }
 
-/* ตกแต่ง Checkbox ให้ดูดีเข้ากับธีม */
+/* ตกแต่ง Checkbox */
 .genre-checkbox {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: whitesmoke;
+  gap: 10px;
+  color: #ccc;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem; /* ปรับลดขนาดลงนิดหน่อยเพื่อให้พอดีกล่อง */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   user-select: none;
-  transition: color 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4); /* เพิ่มพื้นหลังจางๆ ให้รู้ขอบเขตของแต่ละช่อง */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* เพิ่มกรอบบางๆ */
+  transition: all 0.2s ease;
 
+  /* บังคับให้กล่องมีความกว้างเท่ากับที่ Grid กำหนดไว้เสมอ */
+  width: 100%;
+  height: 100%;
+
+  /* ลูกเล่นเมื่อเอาเมาส์ชี้ที่ช่อง */
   &:hover {
-    color: #ffcc00; /* สีเหลืองทองตอนชี้ */
+    color: #ffcc00;
+    background: rgba(161, 0, 0, 0.25);
+    border-color: rgba(161, 0, 0, 0.5);
+    transform: translateY(-2px); /* เปลี่ยนจากเลื่อนขวา เป็นเด้งขึ้นเบาๆ จะดูเป็นระเบียบกว่า */
   }
 
-  input[type="checkbox"] {
-    accent-color: rgb(188, 0, 0); /* เปลี่ยนสี Checkbox มาตรฐานเป็นแดง */
-    width: 16px;
-    height: 16px;
+  input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #555;
+    border-radius: 4px;
+    background: #222;
     cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* ป้องกันไม่ให้ Checkbox โดนบีบจนเบี้ยว */
+
+    &:checked {
+      background: rgb(188, 0, 0);
+      border-color: rgb(255, 0, 0);
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+    }
+
+    &:checked::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .genre-name {
+    flex-grow: 1;
+    white-space: nowrap; /* ห้ามตัดขึ้นบรรทัดใหม่ */
+    overflow: hidden; /* ถ้าข้อความยาวไปให้ซ่อน */
+    text-overflow: ellipsis; /* ใส่ ... ไว้ท้ายข้อความที่ยาวเกิน */
   }
 
   .genre-count {
-    color: #999;
+    color: #888;
     font-size: 0.8rem;
+    flex-shrink: 0; /* ป้องกันไม่ให้ตัวเลขโดนบีบ */
+  }
+}
+
+/* ========================================= */
+/* ===== APPLY FILTER BUTTON ===== */
+/* ========================================= */
+.apply-btn {
+  align-self: flex-end; /* ดันปุ่มไปอยู่ขวาล่าง */
+  padding: 12px 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: white;
+  background: linear-gradient(135deg, rgb(142, 0, 0), rgb(200, 0, 0));
+  border: 2px solid rgb(255, 50, 50);
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(161, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  letter-spacing: 1px;
+
+  &:hover {
+    background: linear-gradient(135deg, rgb(200, 0, 0), rgb(255, 0, 0));
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.8);
+    border-color: #ffcc00;
+    color: #ffcc00;
+  }
+
+  &:active {
+    transform: translateY(1px) scale(0.95);
+    box-shadow: 0 2px 10px rgba(161, 0, 0, 0.5);
   }
 }
 
@@ -152,8 +263,6 @@ fieldset {
   background: #ff0000;
   color: #ffffff;
   transform: scale(1.2);
-
-
 }
 
 /* ===== RIGHT: SEARCH ===== */
@@ -185,7 +294,6 @@ fieldset {
   box-shadow: 0 0 0 2px rgb(255, 0, 0);
   transform: scale(1.05);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
 
 .form-control::placeholder {
@@ -200,15 +308,13 @@ fieldset {
   background: #ff0000;
   color: white;
   cursor: pointer;
-    transition: all 0.3s ease;
-  
+  transition: all 0.3s ease;
 }
 
 .clear-btn:hover {
   background: #b70000;
   transform: scale(1.2);
   animation: spinCrazy 1.2s linear infinite;
-
 }
 @keyframes spinCrazy {
   0% {
