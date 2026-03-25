@@ -1,7 +1,6 @@
 <div class="anime-detail">
-
   <div class="anime-image">
-    @if(data().images.webp){
+    @if (data().images.webp) {
       <img [src]="data().images.jpg.image_url" [alt]="data().title" />
     } @else {
       <img [src]="data().images.webp.image_url" [alt]="data().title" />
@@ -9,117 +8,99 @@
   </div>
 
   <div class="anime-content">
-
     <div class="anime-info">
       <div class="info-left">
-
         <div class="info-row">
           <span class="label">Title</span>
           <span class="value">{{ data().title }}</span>
         </div>
-  
+
         <div class="info-row">
           <span class="label">Type</span>
           <span class="value">{{ data().type }}</span>
         </div>
-  
+
         <div class="info-row">
           <span class="label">Episodes</span>
-          <span class="value">{{ data().episodes ?? '-'}}</span>
+          <span class="value">{{ data().episodes ?? '-' }}</span>
         </div>
-  
+
         <div class="info-row">
           <span class="label">Status</span>
           <span class="value">{{ data().status }}</span>
         </div>
-  
+
         <div class="info-row">
           <span class="label">Rating</span>
           <span class="value">{{ data().rating }}</span>
         </div>
       </div>
-      @if(data().background){
-
+      @if (data().background) {
         <div class="info-right">
-  
           <div class="info-row-bg">
             <span class="label">Background</span>
             <span class="value-bg">{{ data().background }}</span>
           </div>
         </div>
       }
-
     </div>
 
     <div class="anime-extra">
-
-      
       <h2 class="section-title">Main Characters</h2>
       <div class="character-list">
         @for (character of characters(); track character.character.mal_id) {
-          @if(character.role === 'Main') {
-            
+          @if (character.role === 'Main') {
             <div class="character-card">
               <div class="character-image">
-                <a [routerLink]="['/anime/character',character.character.mal_id]">
+                <a [routerLink]="['/anime/character', character.character.mal_id]">
                   <img
-                  [src]="character.character.images.webp.image_url"
-                  [alt]="character.character.name"
+                    [src]="character.character.images.webp.image_url"
+                    [alt]="character.character.name"
                   />
                 </a>
               </div>
-              <p>{{character.character.name}}</p>
+              <p>{{ character.character.name }}</p>
             </div>
-
           }
         }
       </div>
-      <h2 class="section-title">Other Characters</h2>
+      <h2 class="section-title">Supporting Characters</h2>
       <div class="character-list">
         @for (character of characters(); track character.character.mal_id) {
-          
-          @if(character.role !== 'Main' && loadMore()) {
-            
+          @if (character.role !== 'Main' && loadMore()) {
             <div class="character-card">
               <div class="character-image">
-              <a [routerLink]="['/anime/character',character.character.mal_id]">
-                <img
-                [src]="character.character.images.webp.image_url"
-                [alt]="character.character.name"
-                />
-              </a>
-              </div>
-              <p>{{character.character.name}}</p>
-            </div>
-
-          }@else if(character.role !== 'Main' && $index <= 28) {
-            <div class="character-card">
-              <div class="character-image">
-                <a [routerLink]="['/anime/character',character.character.mal_id]">
+                <a [routerLink]="['/anime/character', character.character.mal_id]">
                   <img
-                  [src]="character.character.images.webp.image_url"
-                  [alt]="character.character.name"
+                    [src]="character.character.images.webp.image_url"
+                    [alt]="character.character.name"
                   />
                 </a>
               </div>
-              <p>{{character.character.name}}</p>
+              <p>{{ character.character.name }}</p>
+            </div>
+          } @else if (character.role !== 'Main' && $index <= 28) {
+            <div class="character-card">
+              <div class="character-image">
+                <a [routerLink]="['/anime/character', character.character.mal_id]">
+                  <img
+                    [src]="character.character.images.webp.image_url"
+                    [alt]="character.character.name"
+                  />
+                </a>
+              </div>
+              <p>{{ character.character.name }}</p>
             </div>
           }
         }
-        @if(characters().length > 28){
-
-          @if(!loadMore()){
-            
+        @if (characters().length > 28) {
+          @if (!loadMore()) {
             <button (click)="toggleLoadMore()" class="load-btn">Load more</button>
-          }@else {
-            <button (click)="toggleLoadMore()"  class="load-btn">Show less</button>
-  
+          } @else {
+            <button (click)="toggleLoadMore()" class="load-btn">Show less</button>
           }
         }
       </div>
-
     </div>
-
   </div>
-
 </div>
