@@ -11,42 +11,72 @@
   <div class="anime-content">
 
     <div class="anime-info">
+      <div class="info-left">
 
-      <div class="info-row">
-        <span class="label">Title</span>
-        <span class="value">{{ data().title }}</span>
+        <div class="info-row">
+          <span class="label">Title</span>
+          <span class="value">{{ data().title }}</span>
+        </div>
+  
+        <div class="info-row">
+          <span class="label">Type</span>
+          <span class="value">{{ data().type }}</span>
+        </div>
+  
+        <div class="info-row">
+          <span class="label">Episodes</span>
+          <span class="value">{{ data().episodes ?? '-'}}</span>
+        </div>
+  
+        <div class="info-row">
+          <span class="label">Status</span>
+          <span class="value">{{ data().status }}</span>
+        </div>
+  
+        <div class="info-row">
+          <span class="label">Rating</span>
+          <span class="value">{{ data().rating }}</span>
+        </div>
       </div>
+      @if(data().background){
 
-      <div class="info-row">
-        <span class="label">Type</span>
-        <span class="value">{{ data().type }}</span>
-      </div>
-
-      <div class="info-row">
-        <span class="label">Episodes</span>
-        <span class="value">{{ data().episodes ?? '-'}}</span>
-      </div>
-
-      <div class="info-row">
-        <span class="label">Status</span>
-        <span class="value">{{ data().status }}</span>
-      </div>
-
-      <div class="info-row">
-        <span class="label">Rating</span>
-        <span class="value">{{ data().rating }}</span>
-      </div>
+        <div class="info-right">
+  
+          <div class="info-row-bg">
+            <span class="label">Background</span>
+            <span class="value-bg">{{ data().background }}</span>
+          </div>
+        </div>
+      }
 
     </div>
 
     <div class="anime-extra">
 
+      
       <h2 class="section-title">Main Characters</h2>
-
       <div class="character-list">
         @for (character of characters(); track character.character.mal_id) {
           @if(character.role === 'Main') {
+            
+            <div class="character-card">
+              <a [routerLink]="['/anime/character',character.character.mal_id]">
+                <img
+                [src]="character.character.images.webp.image_url"
+                [alt]="character.character.name"
+                />
+              </a>
+              <p>{{character.character.name}}</p>
+            </div>
 
+          }
+        }
+      </div>
+      <h2 class="section-title">Other Characters</h2>
+      <div class="character-list">
+        @for (character of characters(); track character.character.mal_id) {
+          @if(character.role !== 'Main' && $index <= 28) {
+            
             <div class="character-card">
               <a [routerLink]="['/anime/character',character.character.mal_id]">
                 <img
