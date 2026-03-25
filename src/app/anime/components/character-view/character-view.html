@@ -20,11 +20,15 @@
           {{data().name}} ({{data().name_kanji}})
         </span>
       </div>
+      @if(data().nicknames.length !== 0){
 
-      <div class="info-row">
-        <span class="label">Nickname</span>
-        <span class="value">{{data().nicknames}}</span>
-      </div>
+        <div class="info-row">
+          <span class="label">Nickname</span>
+          <span class="value">{{data().nicknames}}</span>
+        </div>
+     
+      }
+      
 
       <div class="info-row">
         <span class="label">Favorites</span>
