@@ -38,18 +38,6 @@
     </div>
   </div>
 
-  <div class="pagination-left">
-    @if (resource.hasValue()) {
-      <div class="page-info">
-        <span>
-          {{resource.value().pagination.current_page * resource.value().pagination.items.count - 24}}
-          -
-          {{resource.value().pagination.current_page * resource.value().pagination.items.count}}
-        </span>
-        <b> of </b>
-        <span>{{ resource.value().pagination.items.total | number }}</span>
-      </div>
-    }
 
 </div>
 
