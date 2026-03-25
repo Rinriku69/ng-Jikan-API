@@ -29,27 +29,7 @@ export class ListAnimePage {
 
   protected readonly resource = animeListResource(() => this.params());
 
-  protected readonly form = form(linkedSignal(() => ({ q: this.q() ?? '' })),
-    (path) => {
-      disabled(path, () => this.resource.isLoading())
-    })
-
-
-  protected onSearch(): void {
-    submit(
-      this.form,
-      async (form) =>
-        void this.router.navigate([], {
-          queryParams: purnEmptyProperties(form().value()),
-          replaceUrl: true
-        })
-    )
-  }
-
-  protected clearSearch(): void {
-    this.form.q().value.set('');
-    this.onSearch()
-  }
+ 
 
 
 

@@ -38,25 +38,7 @@
     </div>
   </div>
 
-  <div class="search-right">
-    <form (submit)="$event.preventDefault()" (submit)="onSearch()">
-      <fieldset [disabled]="form().disabled()" class="form-group">
-
-        <input 
-          type="text" 
-          [formField]="form.q" 
-          placeholder="Search anime..." 
-          class="form-control"
-        />
-
-        <button type="button" (click)="clearSearch()" class="clear-btn">
-          ✕
-        </button>
-
-      </fieldset>
-    </form>
-  </div>
-
+  
 </div>
 
 @if (resource.hasValue()) {

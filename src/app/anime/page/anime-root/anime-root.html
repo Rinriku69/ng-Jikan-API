@@ -32,6 +32,16 @@
   </svg>
   Season Now
 </a>
+<div class="search-box">
+        <input 
+          type="text" 
+          [value]="searchQuery()" 
+          (input)="onSearchInput($event)"
+          (keyup.enter)="onGlobalSearch()"
+          placeholder="Search anime..."
+        />
+        <button (click)="onGlobalSearch()">Search</button>
+      </div>
     </nav>
 
 <main class="content-area">

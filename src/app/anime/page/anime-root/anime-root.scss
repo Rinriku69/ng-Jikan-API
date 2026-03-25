@@ -102,6 +102,66 @@
     0 1px 3px rgba(123, 0, 0, 0.3),
     0 4px 16px rgba(122, 0, 0, 0.6);
 
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px; /* ดันให้ออกห่างจากเมนูหลักเล็กน้อย */
+
+    input {
+      padding: 8px 16px;
+      font-size: 1rem;
+      font-family: inherit; /* ใช้ฟอนต์เดียวกับ navbar */
+      color: #333;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgb(161, 0, 0); /* สีแดงเข้มล้อกับสีตัวหนังสือเมนู */
+      border-radius: 20px;
+      outline: none;
+      width: 200px;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+
+      &::placeholder {
+        color: #999;
+        font-weight: normal;
+      }
+
+      /* ลูกเล่นเมื่อคลิกที่ช่องค้นหา */
+      &:focus {
+        width: 240px; /* ขยายความยาวออกเล็กน้อย */
+        background: #ffffff;
+        border-color: rgb(188, 0, 0);
+        box-shadow: 0 0 10px rgba(188, 0, 0, 0.4);
+      }
+    }
+
+    button {
+      padding: 8px 18px;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: inherit;
+      color: whitesmoke;
+      background: rgb(161, 0, 0); /* สีแดงตั้งต้น */
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        /* ล้อกับสี Hover ของปุ่ม .active-btn เดิมของคุณ */
+        background: linear-gradient(to left, rgb(188, 0, 0), rgb(255, 0, 0));
+        box-shadow: 0 2px 10px rgb(84, 0, 0);
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(0.95); /* เอฟเฟกต์ยุบตัวเวลากด */
+      }
+    }
+  }  
+
   .nav-btn {
     text-decoration: none;
     display: flex;
