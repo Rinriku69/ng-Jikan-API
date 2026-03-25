@@ -38,6 +38,40 @@
     </div>
   </div>
 
+  <div class="filter-controls">
+    <button class="toggle-filter-btn" (click)="toggleFilter()">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18">
+        <path fill="currentColor" d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"></path>
+      </svg>
+      Filter by Genres
+      @if (selectedGenreIds().length > 0) {
+        <span class="badge">{{ selectedGenreIds().length }}</span>
+      }
+    </button>
+  </div>
+</div>
+
+<div class="genres-wrapper" [class.expanded]="isFilterExpanded()">
+  <div class="genres-inner">
+    @if (genresResource.hasValue()) {
+      <div class="genres-grid">
+        @for (genre of genresResource.value().data; track genre.mal_id) {
+          <label class="genre-checkbox">
+            <input 
+              type="checkbox" 
+              [checked]="selectedGenreIds().includes(genre.mal_id)"
+              (change)="toggleGenre(genre.mal_id)"
+            />
+            <span class="checkmark"></span>
+            <span class="genre-name">{{ genre.name }}</span>
+            <span class="genre-count">({{ genre.count | number }})</span>
+          </label>
+        }
+      </div>
+    } @else if (genresResource.isLoading()) {
+      <p class="status">Loading genres...</p>
+    }
+  </div>
   
 </div>
 
