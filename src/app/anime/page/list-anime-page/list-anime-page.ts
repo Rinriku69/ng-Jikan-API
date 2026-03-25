@@ -2,15 +2,14 @@ import { Component, ChangeDetectionStrategy, signal, input, computed, linkedSign
 import { ListAnime } from '../../components/list-anime/list-anime';
 import { animeListResource } from '../../helpers/resource';
 import { AnimeListParams } from '../../types';
-import { disabled, form, FormField, submit } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
-import { purnEmptyProperties } from '../../helpers/utils';
+
 
 
 @Component({
   selector: 'app-list-anime-page',
-  imports: [ListAnime, FormField, RouterLink, DecimalPipe],
+  imports: [ListAnime, RouterLink, DecimalPipe],
   templateUrl: './list-anime-page.html',
   styleUrl: './list-anime-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,9 +27,6 @@ export class ListAnimePage {
 
 
   protected readonly resource = animeListResource(() => this.params());
-
- 
-
 
 
   protected readonly currentPage = computed(() => Number(this.page() ?? 1));

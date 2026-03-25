@@ -9,6 +9,10 @@ export interface JikanAnimeListResponse {
     readonly data: readonly Anime[];
 }
 
+export interface JikanAnimeGenresResponse {
+    data: AnimeGenre[]
+}
+
 export interface Pagination {
     readonly last_visible_page: number;
     readonly has_next_page: boolean;
@@ -134,4 +138,11 @@ export interface AnimeListParams {
     readonly sfw?: boolean;
     readonly genres?: string;
     readonly order_by?: string;
+}
+
+export interface AnimeGenre {
+    mal_id: number;
+    name: string;
+    url: string;
+    count: number
 }
