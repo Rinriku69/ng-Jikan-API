@@ -9,7 +9,7 @@ import { purnEmptyProperties } from '../../helpers/utils';
 
 @Component({
   selector: 'app-top-anime-page',
-  imports: [ListAnime, RouterLink, DecimalPipe, FormField],
+  imports: [ListAnime, RouterLink, DecimalPipe],
   templateUrl: './top-anime-page.html',
   styleUrl: './top-anime-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
