@@ -1,7 +1,9 @@
 @if (resource.hasValue() ) {
   <app-character-view [data]="resource.value().data" />
 } @else if (resource.error(); as error) {
-  <p>{{ error.message }}</p>
+<div class="nf">
+  <p>Not Found</p>
+</div>
 } @else if (resource.isLoading()) {
-  <p>Loading...</p>
+  <p class="status">Loading...</p>
 }
