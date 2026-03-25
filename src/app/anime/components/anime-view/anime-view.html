@@ -100,12 +100,15 @@
             </div>
           }
         }
-        @if(!loadMore()){
-          
-          <button (click)="toggleLoadMore()" class="load-btn">Load more</button>
-        }@else {
-          <button (click)="toggleLoadMore()"  class="load-btn">Show less</button>
+        @if(characters().length > 28){
 
+          @if(!loadMore()){
+            
+            <button (click)="toggleLoadMore()" class="load-btn">Load more</button>
+          }@else {
+            <button (click)="toggleLoadMore()"  class="load-btn">Show less</button>
+  
+          }
         }
       </div>
 
