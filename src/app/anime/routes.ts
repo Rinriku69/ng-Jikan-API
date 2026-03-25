@@ -9,6 +9,7 @@ import { CharacterViewPage } from "./page/character-view-page/character-view-pag
 
 
 export default [
+    { path: '', redirectTo: 'list', pathMatch: 'full' },
     {
         path: '',
         providers: [],
