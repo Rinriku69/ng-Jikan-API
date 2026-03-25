@@ -75,7 +75,8 @@
       <h2 class="section-title">Other Characters</h2>
       <div class="character-list">
         @for (character of characters(); track character.character.mal_id) {
-          @if(character.role !== 'Main' && $index <= 28) {
+          
+          @if(character.role !== 'Main' && loadMore()) {
             
             <div class="character-card">
               <a [routerLink]="['/anime/character',character.character.mal_id]">
@@ -87,7 +88,24 @@
               <p>{{character.character.name}}</p>
             </div>
 
+          }@else if(character.role !== 'Main' && $index <= 28) {
+            <div class="character-card">
+              <a [routerLink]="['/anime/character',character.character.mal_id]">
+                <img
+                [src]="character.character.images.webp.image_url"
+                [alt]="character.character.name"
+                />
+              </a>
+              <p>{{character.character.name}}</p>
+            </div>
           }
+        }
+        @if(!loadMore()){
+          
+          <button (click)="toggleLoadMore()" class="load-btn">Load more</button>
+        }@else {
+          <button (click)="toggleLoadMore()"  class="load-btn">Show less</button>
+
         }
       </div>
 

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import { Anime } from '../../types';
 import { JsonPipe } from '@angular/common';
 import { AnimeCharacter, CharacterBasic } from '../../type/jikan/character';
@@ -13,4 +13,13 @@ import { RouterLink } from "@angular/router";
 export class AnimeView {
   readonly data = input.required<Anime>();
   readonly characters = input.required<Readonly<AnimeCharacter[]>>();
+  loadMore = signal<boolean>(false);
+
+  toggleLoadMore() {
+    this.loadMore.set(!this.loadMore())
+  }
+
+  constructor() {
+    effect(() => console.log(this.loadMore()))
+  }
 }
