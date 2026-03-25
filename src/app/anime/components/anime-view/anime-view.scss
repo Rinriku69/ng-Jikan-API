@@ -117,8 +117,16 @@
 /* CARD */
 .character-card {
   width: 100px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   transition: 0.3s;
+
+}
+
+.character-image{
+
+  height: 180px;
 }
 
 .character-card img {

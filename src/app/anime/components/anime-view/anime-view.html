@@ -60,12 +60,14 @@
           @if(character.role === 'Main') {
             
             <div class="character-card">
-              <a [routerLink]="['/anime/character',character.character.mal_id]">
-                <img
-                [src]="character.character.images.webp.image_url"
-                [alt]="character.character.name"
-                />
-              </a>
+              <div class="character-image">
+                <a [routerLink]="['/anime/character',character.character.mal_id]">
+                  <img
+                  [src]="character.character.images.webp.image_url"
+                  [alt]="character.character.name"
+                  />
+                </a>
+              </div>
               <p>{{character.character.name}}</p>
             </div>
 
@@ -79,23 +81,27 @@
           @if(character.role !== 'Main' && loadMore()) {
             
             <div class="character-card">
+              <div class="character-image">
               <a [routerLink]="['/anime/character',character.character.mal_id]">
                 <img
                 [src]="character.character.images.webp.image_url"
                 [alt]="character.character.name"
                 />
               </a>
+              </div>
               <p>{{character.character.name}}</p>
             </div>
 
           }@else if(character.role !== 'Main' && $index <= 28) {
             <div class="character-card">
-              <a [routerLink]="['/anime/character',character.character.mal_id]">
-                <img
-                [src]="character.character.images.webp.image_url"
-                [alt]="character.character.name"
-                />
-              </a>
+              <div class="character-image">
+                <a [routerLink]="['/anime/character',character.character.mal_id]">
+                  <img
+                  [src]="character.character.images.webp.image_url"
+                  [alt]="character.character.name"
+                  />
+                </a>
+              </div>
               <p>{{character.character.name}}</p>
             </div>
           }
