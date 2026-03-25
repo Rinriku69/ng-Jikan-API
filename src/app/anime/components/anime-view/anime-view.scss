@@ -30,8 +30,30 @@
 /* ===== INFO ===== */
 .anime-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-content: space-between;
   gap: 15px;
+}
+
+.info-right{
+  max-width: 60rem;
+  justify-self: end;
+  margin-left: auto;
+}
+
+.info-left{
+  display: flex;
+  flex-direction: column;
+  gap:2rem;
+}
+
+.info-row-bg{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.25s ease;
+  transform-origin: left;
 }
 
 /* ROW */
@@ -64,6 +86,12 @@
 .value {
   font-size: 18px;
   font-weight: 700;
+}
+
+.value-bg{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 /* ===== EXTRA SECTION ===== */
