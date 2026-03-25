@@ -1,16 +1,15 @@
 import { Component, ChangeDetectionStrategy, signal, input, computed, linkedSignal, inject } from '@angular/core';
 import { ListAnime } from '../../components/list-anime/list-anime';
-import { animeListResource } from '../../helpers/resource';
+import { animeListResource, getAnimeGenres } from '../../helpers/resource';
 import { AnimeListParams } from '../../types';
-import { disabled, form, FormField, submit } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
-import { purnEmptyProperties } from '../../helpers/utils';
+
 
 
 @Component({
   selector: 'app-list-anime-page',
-  imports: [ListAnime, FormField, RouterLink, DecimalPipe],
+  imports: [ListAnime, RouterLink, DecimalPipe],
   templateUrl: './list-anime-page.html',
   styleUrl: './list-anime-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,41 +17,45 @@ import { purnEmptyProperties } from '../../helpers/utils';
 export class ListAnimePage {
   readonly q = input<string>();
   readonly page = input<string>();
-  private readonly router = inject(Router)
+  readonly genres = input<string>();
+  private readonly router = inject(Router);
   private readonly params = computed<AnimeListParams>(() => ({
     q: this.q() ?? '',
-    page: this.page() ?? ''
+    page: this.page() ?? '',
+    genres: this.genres() ?? ''
   }))
 
-
-
-
   protected readonly resource = animeListResource(() => this.params());
+  protected readonly genresResource = getAnimeGenres();
 
-  protected readonly form = form(linkedSignal(() => ({ q: this.q() ?? '' })),
-    (path) => {
-      disabled(path, () => this.resource.isLoading())
-    })
-
-
-  protected onSearch(): void {
-    submit(
-      this.form,
-      async (form) =>
-        void this.router.navigate([], {
-          queryParams: purnEmptyProperties(form().value()),
-          replaceUrl: true
-        })
-    )
+  //---Genres----
+  protected readonly isFilterExpanded = signal(false);
+  protected readonly selectedGenreIds = computed(() => {
+    const genresStr = this.genres();
+    return genresStr ? genresStr.split(',').map(Number) : [];
+  });
+  protected toggleFilter(): void {
+    this.isFilterExpanded.update(v => !v);
   }
 
-  protected clearSearch(): void {
-    this.form.q().value.set('');
-    this.onSearch()
+  protected toggleGenre(genreId: number): void {
+    const currentSelected = this.selectedGenreIds();
+    let updatedGenres: number[];
+
+    if (currentSelected.includes(genreId)) {
+      updatedGenres = currentSelected.filter(id => id !== genreId);
+    } else {
+      updatedGenres = [...currentSelected, genreId];
+    }
+
+    const genresParam = updatedGenres.length > 0 ? updatedGenres.join(',') : null;
+
+    this.router.navigate([], {
+      queryParams: { genres: genresParam, page: null },
+      queryParamsHandling: 'merge'
+    });
   }
-
-
-
+  //----------------
   protected readonly currentPage = computed(() => Number(this.page() ?? 1));
 
   protected readonly previousPage = computed(() => {

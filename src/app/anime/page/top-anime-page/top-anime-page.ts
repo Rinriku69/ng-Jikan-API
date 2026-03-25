@@ -1,11 +1,9 @@
 import { Component, ChangeDetectionStrategy, computed, input, inject, linkedSignal, effect } from '@angular/core';
-import { animeListResource, topAnimeResource } from '../../helpers/resource';
+import { topAnimeResource } from '../../helpers/resource';
 import { AnimeListParams } from '../../types';
 import { ListAnime } from '../../components/list-anime/list-anime';
-import { Router, RouterLink } from '@angular/router';
+import {  RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
-import { disabled, form, FormField, submit } from '@angular/forms/signals';
-import { purnEmptyProperties } from '../../helpers/utils';
 
 @Component({
   selector: 'app-top-anime-page',
